@@ -1,7 +1,6 @@
 import 'package:coffe_diary/injection.dart';
+import 'package:coffe_diary/presentation/pages/add_brew/page.dart';
 import 'package:flutter/material.dart';
-
-import 'presentation/pages/home/page.dart';
 
 void main() {
   startDependencies();
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Home(),
+      home: AddBrew(),
     );
   }
 }
