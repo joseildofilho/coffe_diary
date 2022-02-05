@@ -25,6 +25,10 @@ class _$AddBrewFormStateTearOff {
   Editing editing() {
     return Editing();
   }
+
+  Done done() {
+    return Done();
+  }
 }
 
 /// @nodoc
@@ -36,18 +40,21 @@ mixin _$AddBrewFormState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() editing,
+    required TResult Function() done,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? editing,
+    TResult Function()? done,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? editing,
+    TResult Function()? done,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,18 +62,21 @@ mixin _$AddBrewFormState {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Editing value) editing,
+    required TResult Function(Done value) done,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Editing value)? editing,
+    TResult Function(Done value)? done,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Editing value)? editing,
+    TResult Function(Done value)? done,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,6 +139,7 @@ class _$Initial implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() editing,
+    required TResult Function() done,
   }) {
     return initial();
   }
@@ -138,6 +149,7 @@ class _$Initial implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? editing,
+    TResult Function()? done,
   }) {
     return initial?.call();
   }
@@ -147,6 +159,7 @@ class _$Initial implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? editing,
+    TResult Function()? done,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -160,6 +173,7 @@ class _$Initial implements Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Editing value) editing,
+    required TResult Function(Done value) done,
   }) {
     return initial(this);
   }
@@ -169,6 +183,7 @@ class _$Initial implements Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Editing value)? editing,
+    TResult Function(Done value)? done,
   }) {
     return initial?.call(this);
   }
@@ -178,6 +193,7 @@ class _$Initial implements Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Editing value)? editing,
+    TResult Function(Done value)? done,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -231,6 +247,7 @@ class _$Editing implements Editing {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() editing,
+    required TResult Function() done,
   }) {
     return editing();
   }
@@ -240,6 +257,7 @@ class _$Editing implements Editing {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? editing,
+    TResult Function()? done,
   }) {
     return editing?.call();
   }
@@ -249,6 +267,7 @@ class _$Editing implements Editing {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? editing,
+    TResult Function()? done,
     required TResult orElse(),
   }) {
     if (editing != null) {
@@ -262,6 +281,7 @@ class _$Editing implements Editing {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Editing value) editing,
+    required TResult Function(Done value) done,
   }) {
     return editing(this);
   }
@@ -271,6 +291,7 @@ class _$Editing implements Editing {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Editing value)? editing,
+    TResult Function(Done value)? done,
   }) {
     return editing?.call(this);
   }
@@ -280,6 +301,7 @@ class _$Editing implements Editing {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Editing value)? editing,
+    TResult Function(Done value)? done,
     required TResult orElse(),
   }) {
     if (editing != null) {
@@ -291,4 +313,112 @@ class _$Editing implements Editing {
 
 abstract class Editing implements AddBrewFormState {
   factory Editing() = _$Editing;
+}
+
+/// @nodoc
+abstract class $DoneCopyWith<$Res> {
+  factory $DoneCopyWith(Done value, $Res Function(Done) then) =
+      _$DoneCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$DoneCopyWithImpl<$Res> extends _$AddBrewFormStateCopyWithImpl<$Res>
+    implements $DoneCopyWith<$Res> {
+  _$DoneCopyWithImpl(Done _value, $Res Function(Done) _then)
+      : super(_value, (v) => _then(v as Done));
+
+  @override
+  Done get _value => super._value as Done;
+}
+
+/// @nodoc
+
+class _$Done implements Done {
+  _$Done();
+
+  @override
+  String toString() {
+    return 'AddBrewFormState.done()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Done);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() editing,
+    required TResult Function() done,
+  }) {
+    return done();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? editing,
+    TResult Function()? done,
+  }) {
+    return done?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? editing,
+    TResult Function()? done,
+    required TResult orElse(),
+  }) {
+    if (done != null) {
+      return done();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Editing value) editing,
+    required TResult Function(Done value) done,
+  }) {
+    return done(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Editing value)? editing,
+    TResult Function(Done value)? done,
+  }) {
+    return done?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Editing value)? editing,
+    TResult Function(Done value)? done,
+    required TResult orElse(),
+  }) {
+    if (done != null) {
+      return done(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Done implements AddBrewFormState {
+  factory Done() = _$Done;
 }

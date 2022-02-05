@@ -5,5 +5,8 @@ part 'state.freezed.dart';
 @freezed
 class AddBrewFormState with _$AddBrewFormState {
   factory AddBrewFormState.initial() = Initial;
+
   factory AddBrewFormState.editing() = Editing;
+
+  factory AddBrewFormState.done() = Done;
 }
