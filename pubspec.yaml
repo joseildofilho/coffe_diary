@@ -12,6 +12,11 @@ dependencies:
   fpdart: 0.0.14
   equatable: ^2.0.3
   get_it: ^7.2.0
+  flutter_hooks: ^0.18.2
+  provider: ^6.0.2
+  shimmer: ^2.0.0
+  freezed_annotation: ^1.1.0
+
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
@@ -20,6 +25,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
+
+  build_runner: ^2.1.7
+  freezed: ^1.1.1
 
 flutter:
   uses-material-design: true

@@ -1,3 +1,5 @@
+import 'package:coffe_diary/presentation/pages/home/controller.dart';
+import 'package:coffe_diary/presentation/pages/home/tunnels.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/repositories/brews_repository_memory.dart';
@@ -9,13 +11,18 @@ final inject = GetIt.I;
 Future<void> startDependencies() async {
   _startRepositories();
   _startUseCases();
+  _controllers();
 }
 
 void _startRepositories() {
-  inject.registerLazySingleton(BrewsRepositoryMemory);
+  inject.registerLazySingleton<BrewsRepository>(() => BrewsRepositoryMemory());
 }
 
 void _startUseCases() {
-  inject.registerFactoryParam<GetBrews, BrewsRepository, void>(
-      (brewsRepo, _) => GetBrews(brewsRepo));
+  inject.registerFactory<GetBrews>(() => GetBrews(inject<BrewsRepository>()));
+}
+
+void _controllers() {
+  inject.registerFactoryParam<HomeController, HomeTunnels, void>(
+      (tunnels, _) => HomeController(tunnels));
 }

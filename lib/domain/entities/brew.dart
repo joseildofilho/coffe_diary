@@ -4,7 +4,7 @@ class Brew extends Equatable {
   final String coffeType;
   final int score;
 
-  Brew({
+  const Brew({
     required this.coffeType,
     required this.score,
   });
