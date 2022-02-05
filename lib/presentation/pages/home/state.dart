@@ -4,7 +4,7 @@ part 'state.freezed.dart';
 
 @freezed
 class MainListState with _$MainListState {
-  factory MainListState.initial() = MainListInital;
+  factory MainListState.initial() = MainListInitial;
   factory MainListState.loading() = MainListLoading;
   factory MainListState.done() = MainListDone;
 }

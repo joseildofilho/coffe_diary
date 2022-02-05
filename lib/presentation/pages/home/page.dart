@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mainList = useValueNotifier(MainListInital());
+    final mainList = useValueNotifier(MainListInitial());
 
     final controller = HomeController(mainList: mainList);
 

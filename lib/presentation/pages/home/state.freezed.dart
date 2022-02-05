@@ -18,8 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$MainListStateTearOff {
   const _$MainListStateTearOff();
 
-  MainListInital initial() {
-    return MainListInital();
+  MainListInitial initial() {
+    return MainListInitial();
   }
 
   MainListLoading loading() {
@@ -60,21 +60,21 @@ mixin _$MainListState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MainListInital value) initial,
+    required TResult Function(MainListInitial value) initial,
     required TResult Function(MainListLoading value) loading,
     required TResult Function(MainListDone value) done,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MainListInital value)? initial,
+    TResult Function(MainListInitial value)? initial,
     TResult Function(MainListLoading value)? loading,
     TResult Function(MainListDone value)? done,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MainListInital value)? initial,
+    TResult Function(MainListInitial value)? initial,
     TResult Function(MainListLoading value)? loading,
     TResult Function(MainListDone value)? done,
     required TResult orElse(),
@@ -100,28 +100,28 @@ class _$MainListStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $MainListInitalCopyWith<$Res> {
-  factory $MainListInitalCopyWith(
-          MainListInital value, $Res Function(MainListInital) then) =
-      _$MainListInitalCopyWithImpl<$Res>;
+abstract class $MainListInitialCopyWith<$Res> {
+  factory $MainListInitialCopyWith(
+          MainListInitial value, $Res Function(MainListInitial) then) =
+      _$MainListInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$MainListInitalCopyWithImpl<$Res>
+class _$MainListInitialCopyWithImpl<$Res>
     extends _$MainListStateCopyWithImpl<$Res>
-    implements $MainListInitalCopyWith<$Res> {
-  _$MainListInitalCopyWithImpl(
-      MainListInital _value, $Res Function(MainListInital) _then)
-      : super(_value, (v) => _then(v as MainListInital));
+    implements $MainListInitialCopyWith<$Res> {
+  _$MainListInitialCopyWithImpl(
+      MainListInitial _value, $Res Function(MainListInitial) _then)
+      : super(_value, (v) => _then(v as MainListInitial));
 
   @override
-  MainListInital get _value => super._value as MainListInital;
+  MainListInitial get _value => super._value as MainListInitial;
 }
 
 /// @nodoc
 
-class _$MainListInital implements MainListInital {
-  _$MainListInital();
+class _$MainListInitial implements MainListInitial {
+  _$MainListInitial();
 
   @override
   String toString() {
@@ -131,7 +131,7 @@ class _$MainListInital implements MainListInital {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MainListInital);
+        (other.runtimeType == runtimeType && other is MainListInitial);
   }
 
   @override
@@ -174,7 +174,7 @@ class _$MainListInital implements MainListInital {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MainListInital value) initial,
+    required TResult Function(MainListInitial value) initial,
     required TResult Function(MainListLoading value) loading,
     required TResult Function(MainListDone value) done,
   }) {
@@ -184,7 +184,7 @@ class _$MainListInital implements MainListInital {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MainListInital value)? initial,
+    TResult Function(MainListInitial value)? initial,
     TResult Function(MainListLoading value)? loading,
     TResult Function(MainListDone value)? done,
   }) {
@@ -194,7 +194,7 @@ class _$MainListInital implements MainListInital {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MainListInital value)? initial,
+    TResult Function(MainListInitial value)? initial,
     TResult Function(MainListLoading value)? loading,
     TResult Function(MainListDone value)? done,
     required TResult orElse(),
@@ -206,8 +206,8 @@ class _$MainListInital implements MainListInital {
   }
 }
 
-abstract class MainListInital implements MainListState {
-  factory MainListInital() = _$MainListInital;
+abstract class MainListInitial implements MainListState {
+  factory MainListInitial() = _$MainListInitial;
 }
 
 /// @nodoc
@@ -285,7 +285,7 @@ class _$MainListLoading implements MainListLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MainListInital value) initial,
+    required TResult Function(MainListInitial value) initial,
     required TResult Function(MainListLoading value) loading,
     required TResult Function(MainListDone value) done,
   }) {
@@ -295,7 +295,7 @@ class _$MainListLoading implements MainListLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MainListInital value)? initial,
+    TResult Function(MainListInitial value)? initial,
     TResult Function(MainListLoading value)? loading,
     TResult Function(MainListDone value)? done,
   }) {
@@ -305,7 +305,7 @@ class _$MainListLoading implements MainListLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MainListInital value)? initial,
+    TResult Function(MainListInitial value)? initial,
     TResult Function(MainListLoading value)? loading,
     TResult Function(MainListDone value)? done,
     required TResult orElse(),
@@ -395,7 +395,7 @@ class _$MainListDone implements MainListDone {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MainListInital value) initial,
+    required TResult Function(MainListInitial value) initial,
     required TResult Function(MainListLoading value) loading,
     required TResult Function(MainListDone value) done,
   }) {
@@ -405,7 +405,7 @@ class _$MainListDone implements MainListDone {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MainListInital value)? initial,
+    TResult Function(MainListInitial value)? initial,
     TResult Function(MainListLoading value)? loading,
     TResult Function(MainListDone value)? done,
   }) {
@@ -415,7 +415,7 @@ class _$MainListDone implements MainListDone {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MainListInital value)? initial,
+    TResult Function(MainListInitial value)? initial,
     TResult Function(MainListLoading value)? loading,
     TResult Function(MainListDone value)? done,
     required TResult orElse(),
