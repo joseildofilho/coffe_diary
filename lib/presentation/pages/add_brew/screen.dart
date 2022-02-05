@@ -1,6 +1,11 @@
+import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:provider/src/provider.dart';
+import 'package:time/time.dart';
+
+import 'controller.dart';
 
 class AddBrewScreen extends StatelessWidget {
   @override
@@ -9,43 +14,68 @@ class AddBrewScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Coffee Diary'),
       ),
-      body: _AddBrewForm(),
+      body: Column(
+        children: [
+          _AddBrewForm(),
+          ElevatedButton(
+              onPressed: context.read<AddBrewController>().save,
+              child: const Text('Save'))
+        ],
+      ),
     );
   }
 }
 
-class _AddBrewForm extends HookWidget {
+class _AddBrewForm extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => Column(
-        children: [
-          FormBuilderTextField(
-            name: 'coffee_name',
-            decoration: const InputDecoration(hintText: 'Coffee Name'),
+  Widget build(BuildContext context) {
+    final controller = context.read<AddBrewController>();
+    return FormBuilder(
+        child: Column(
+      children: [
+        _formInput('coffee_name', 'Coffee Name', controller.validateCoffeeName),
+        Row(children: <Widget>[
+          Expanded(
+            child: _formInput('quantity', 'Coffee Quantity',
+                controller.validateCoffeeQuantiy),
           ),
-          Row(children: <Widget>[
-            Expanded(
-              child: FormBuilderTextField(
-                name: 'quantity',
-                decoration: const InputDecoration(hintText: 'Coffee Quantity'),
-              ),
-            ),
-            const SizedBox(
-              width: 16,
-            ),
-            Expanded(
-              child: FormBuilderTextField(
-                name: 'ratio',
-                decoration: const InputDecoration(hintText: 'ratio'),
-              ),
-            )
-          ]),
-          FormBuilderDateTimePicker(
-            name: 'bloom_time',
-            inputType: InputType.time,
-            decoration: const InputDecoration(hintText: 'Bloom Time'),
-            initialTime: const TimeOfDay(hour: 0, minute: 0),
-            timePickerInitialEntryMode: TimePickerEntryMode.input,
+          const SizedBox(
+            width: 16,
           ),
-        ],
+          Expanded(
+            child: _formInput('ratio', 'ratio', controller.validateRatio),
+          )
+        ]),
+        _DurationPicker(),
+      ],
+    ));
+  }
+
+  Widget _formInput(
+          String name, String hintText, FormFieldValidator<String> validator) =>
+      FormBuilderTextField(
+        name: name,
+        decoration: InputDecoration(hintText: hintText),
+        validator: validator,
+        autovalidateMode: AutovalidateMode.always,
       );
+}
+
+class _DurationPicker extends HookWidget {
+  @override
+  Widget build(BuildContext context) {
+    final duration = useState(0.seconds);
+    final controller = useTextEditingController();
+    controller.value = TextEditingValue(text: duration.value.toString());
+
+    return FormBuilderTextField(
+      controller: controller,
+      onTap: () =>
+          showDurationPicker(context: context, initialTime: duration.value)
+              .then((value) => duration.value = value ?? 0.seconds),
+      name: 'bloom_time',
+      decoration: const InputDecoration(hintText: 'Bloom Time'),
+      autovalidateMode: AutovalidateMode.always,
+    );
+  }
 }
