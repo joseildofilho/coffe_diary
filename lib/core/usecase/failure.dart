@@ -1,13 +1,22 @@
-abstract class Failure {}
+import 'package:equatable/equatable.dart';
+
+abstract class Failure extends Equatable {}
 
 class NotificationBundle extends Failure {
-    Iterable<Notification> notifications;
+  final Iterable<Notification> notifications;
 
-    NotificationBundle(this.notifications);
+  NotificationBundle(this.notifications);
+
+  @override
+  List<Object?> get props => notifications.toList();
 }
 
-class Notification {
-    final String message;
+class Notification extends Equatable {
+  final String message;
 
-    Notification({required this.message});
+  const Notification({required this.message});
+
+  @override
+  List<Object?> get props => [message];
+
 }
