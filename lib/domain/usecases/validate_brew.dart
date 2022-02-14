@@ -3,7 +3,6 @@ import 'package:coffe_diary/core/usecase/success.dart';
 import 'package:coffe_diary/core/usecase/usecases.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:fpdart/src/io_either.dart';
 
 class ValidateBrew extends UseCaseSync<ValidateBrewParams, Success> {
   @override
