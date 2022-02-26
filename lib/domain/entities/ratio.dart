@@ -9,9 +9,10 @@ class Ratio extends Equatable {
 
   String get ratio => _ratio;
 
-  static IOEither<Failure, Ratio> build({required String ratio}) {
-    if (ratio.isEmpty) IOEither.left(RatioCannotBeEmpty());
-    return IOEither.of(Ratio._internal(ratio));
+  static Either<Failure, Ratio> build({required String ratio}) {
+    if (ratio.isEmpty) return Either.left(RatioCannotBeEmpty());
+
+    return Either.of(Ratio._internal(ratio));
   }
 
   @override

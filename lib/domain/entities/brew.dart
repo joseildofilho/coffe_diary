@@ -14,7 +14,7 @@ class Brew extends Equatable {
   const Brew._internal(this.coffeType, this.coffeeQuantity, this.ratio,
       this.duration, this.score);
 
-  static IOEither<Failures, Brew> build(
+  static Either<Failures, Brew> build(
       {required String coffeType,
       required double coffeeQuantity,
       required Ratio ratio,
@@ -32,10 +32,10 @@ class Brew extends Equatable {
       failures.add(ScoreCannotBeNegative());
     }
     if (failures.isNotEmpty) {
-      return IOEither.left(Failures(failures));
+      return Either.left(Failures(failures));
     }
 
-    return IOEither.of(Brew._internal(
+    return Either.of(Brew._internal(
       coffeType,
       coffeeQuantity,
       ratio,
