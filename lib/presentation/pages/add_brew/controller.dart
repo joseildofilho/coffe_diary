@@ -20,30 +20,27 @@ class AddBrewController {
 
   String? validateCoffeeName(String? coffeeName) {
     _coffeeName = coffeeName ?? '';
+    return null;
   }
 
   String? validateCoffeeQuantiy(String? coffeeQuantity) {
     _coffeeQuantity = coffeeQuantity ?? '';
+    return null;
   }
 
   String? validateRatio(String? ratio) {
     _ratio = ratio ?? '';
+    return null;
   }
 
-  String? validateBloomTime(DateTime? bloomTime) {
+  String? validateBloomTime(String? bloomTime) {
     if (bloomTime != null) {
-      final x = bloomTime.subtract(366.days);
-      print(x);
+        final times = bloomTime.split(':').map(int.tryParse).whereType<int>();
+      final duration = Duration(hours: times.first, minutes: times.skip(1).first);
+      _bloomTime = duration;
     }
-    //_bloomTime = bloomTime ?? 0.minutes;
+    return null;
   }
-
-  ValidateBrewParams _buildValidationParams() => ValidateBrewParams(
-        coffeeName: _coffeeName,
-        coffeeQuantity: _coffeeQuantity,
-        ratio: _ratio,
-        bloomTime: _bloomTime,
-      );
 
   void save() {}
 }

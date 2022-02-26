@@ -65,11 +65,13 @@ class _DurationPicker extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final duration = useState(0.seconds);
-    final controller = useTextEditingController();
-    controller.value = TextEditingValue(text: duration.value.toString());
+    final textController = useTextEditingController();
+    final controller = context.read<AddBrewController>();
+    textController.value = TextEditingValue(text: duration.value.toString());
 
     return FormBuilderTextField(
-      controller: controller,
+      controller: textController,
+      validator: controller.validateBloomTime,
       onTap: () =>
           showDurationPicker(context: context, initialTime: duration.value)
               .then((value) => duration.value = value ?? 0.seconds),
