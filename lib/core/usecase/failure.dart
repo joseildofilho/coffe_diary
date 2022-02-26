@@ -1,6 +1,15 @@
 import 'package:equatable/equatable.dart';
 
-abstract class Failure extends Equatable {}
+abstract class Failure extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
+
+class Failures {
+  final List<Failure> failures;
+
+  const Failures(this.failures);
+}
 
 class NotificationBundle extends Failure {
   final Iterable<Notification> notifications;
@@ -18,5 +27,4 @@ class Notification extends Equatable {
 
   @override
   List<Object?> get props => [message];
-
 }
