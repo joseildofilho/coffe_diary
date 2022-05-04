@@ -7,6 +7,8 @@ class Ratio extends Equatable {
   final String _ratio;
   const Ratio._internal(this._ratio);
 
+  const Ratio.oneOne() : _ratio = '1/1';
+
   String get ratio => _ratio;
 
   static Either<Failure, Ratio> build({required String ratio}) {

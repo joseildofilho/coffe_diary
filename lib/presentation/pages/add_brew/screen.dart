@@ -2,28 +2,28 @@ import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:provider/src/provider.dart';
+import 'package:provider/provider.dart';
 import 'package:time/time.dart';
 
 import 'controller.dart';
 
 class AddBrewScreen extends StatelessWidget {
+  const AddBrewScreen({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Coffee Diary'),
-      ),
-      body: Column(
-        children: [
-          _AddBrewForm(),
-          ElevatedButton(
-              onPressed: context.read<AddBrewController>().save,
-              child: const Text('Save'))
-        ],
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: const Text('Coffee Diary'),
+        ),
+        body: Column(
+          children: [
+            _AddBrewForm(),
+            ElevatedButton(
+                onPressed: context.read<AddBrewController>().save,
+                child: const Text('Save'))
+          ],
+        ),
+      );
 }
 
 class _AddBrewForm extends StatelessWidget {
@@ -33,20 +33,7 @@ class _AddBrewForm extends StatelessWidget {
     return FormBuilder(
         child: Column(
       children: [
-        _formInput('coffee_name', 'Coffee Name', controller.validateCoffeeName),
-        Row(children: <Widget>[
-          Expanded(
-            child: _formInput('quantity', 'Coffee Quantity',
-                controller.validateCoffeeQuantiy),
-          ),
-          const SizedBox(
-            width: 16,
-          ),
-          Expanded(
-            child: _formInput('ratio', 'ratio', controller.validateRatio),
-          )
-        ]),
-        _DurationPicker(),
+        _formInput('Description', 'Description', context.read<AddBrewController>().validateDescription),
       ],
     ));
   }

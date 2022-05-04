@@ -10,16 +10,26 @@ class Brew extends Equatable {
   final Ratio ratio;
   final Duration duration;
   final int score;
+  final String description;
 
   const Brew._internal(this.coffeType, this.coffeeQuantity, this.ratio,
-      this.duration, this.score);
+      this.duration, this.score, this.description);
+
+  const Brew.initial()
+      : coffeType = '',
+        coffeeQuantity = 0.0,
+        ratio = const Ratio.oneOne(),
+        duration = Duration.zero,
+        score = 0,
+        description = '';
 
   static Either<Failures, Brew> build(
       {required String coffeType,
       required double coffeeQuantity,
       required Ratio ratio,
       required Duration duration,
-      required int score}) {
+      required int score,
+      required String description,}) {
     List<Failure> failures = [];
 
     if (coffeType.isNotEmpty) {
@@ -31,9 +41,14 @@ class Brew extends Equatable {
     if (score.isNegative) {
       failures.add(ScoreCannotBeNegative());
     }
+    if(description.isEmpty) {
+      failures.add(DescriptionIsEmpty());
+    }
+
     if (failures.isNotEmpty) {
       return Either.left(Failures(failures));
     }
+
 
     return Either.of(Brew._internal(
       coffeType,
@@ -41,6 +56,7 @@ class Brew extends Equatable {
       ratio,
       duration,
       score,
+      description
     ));
   }
 
@@ -55,6 +71,8 @@ class Brew extends Equatable {
 }
 
 class CoffeeTypeIsEmpty extends Failure {}
+
+class DescriptionIsEmpty extends Failure {}
 
 class QuantityCannotBeNegative extends Failure {}
 

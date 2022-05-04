@@ -18,7 +18,7 @@ class AddBrew extends HookWidget {
 
     return Provider(
       create: (_) => controller,
-      child: AddBrewScreen(),
+      child: const AddBrewScreen(),
     );
   }
 }

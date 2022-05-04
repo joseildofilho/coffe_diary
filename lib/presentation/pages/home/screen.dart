@@ -22,14 +22,14 @@ class _MainList extends HookWidget {
   Widget build(BuildContext context) {
     final state = useValueListenable(context.read<HomeTunnels>().mainList);
 
-    const brew = Brew(coffeType: 'Arabica', score: 8);
+    const brew = Brew.initial();
     final widget = state.when(
         initial: () => Shimmer.fromColors(
-            child: BrewItemTile(brew: brew),
+            child: const BrewItemTile(brew: brew),
             baseColor: Colors.grey.shade400,
             highlightColor: Colors.grey),
-        loading: () => BrewItemTile(brew: brew),
-        done: () => BrewItemTile(brew: brew));
+        loading: () => const BrewItemTile(brew: brew),
+        done: () => const BrewItemTile(brew: brew));
     return ListView(
       children: [widget],
     );
