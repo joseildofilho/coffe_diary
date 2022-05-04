@@ -10,7 +10,7 @@ class CreateBrewRegister extends UseCase<CreateBrewRegisterParams, Success> {
     return _validateInput(param).toTask();
   }
 
-  IOEither<NotificationBundle, Success> _validateInput(
+  Either<NotificationBundle, Success> _validateInput(
       CreateBrewRegisterParams param) {
     final notifications = <Notification>[];
 
@@ -23,9 +23,9 @@ class CreateBrewRegister extends UseCase<CreateBrewRegisterParams, Success> {
     }
 
     if (notifications.isEmpty) {
-      return IOEither.of(success);
+      return Either.of(success);
     }
-    return IOEither.left(NotificationBundle(notifications));
+    return Either.left(NotificationBundle(notifications));
   }
 }
 

@@ -6,8 +6,16 @@ abstract class UseCase<Param, Return> {
   TaskEither<Failure, Return> call(Param param);
 }
 
+abstract class UseCaseMultiFailure<Param, Return> {
+  TaskEither<List<Failure>, Return> call(Param param);
+}
+
 abstract class UseCaseSync<Param, Return> {
-  IOEither<Failure, Return> call(Param param);
+  Either<Failure, Return> call(Param param);
+}
+
+abstract class UseCaseSyncMultiFailure<Param, Return> {
+  Either<List<Failure>, Return> call(Param param);
 }
 
 abstract class UseCaseNoParam<Return> extends UseCase<Unit, Return> {

@@ -4,24 +4,31 @@ import 'package:coffe_diary/core/usecase/usecases.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fpdart/fpdart.dart';
 
-class ValidateBrew extends UseCaseSync<ValidateBrewParams, Success> {
+import '../entities/brew.dart';
+
+import '../entities/ratio.dart';
+
+class ValidateBrew
+    extends UseCaseSyncMultiFailure<ValidateBrewParams, Success> {
+
   @override
-  IOEither<Failure, Success> call(param) {
-    return IOEither.of(success);
+  Either<List<Failure>, Success> call(ValidateBrewParams param) {
+    return Brew.build(
+      coffeeQuantity: 0.0,
+      coffeType: 'arabica',
+      ratio: const Ratio.oneOne(),
+      duration: Duration.zero,
+      score: 0,
+      description: param.description ?? 'No Description',
+    ).map((_) => success).mapLeft((fails) => fails.failures);
   }
 }
 
 class ValidateBrewParams extends Equatable {
-  final String coffeeName, coffeeQuantity, ratio;
-  final Duration bloomTime;
+  final String? description;
 
-  const ValidateBrewParams({
-    required this.coffeeName,
-    required this.coffeeQuantity,
-    required this.ratio,
-    required this.bloomTime,
-  });
+  const ValidateBrewParams({this.description});
 
   @override
-  List<Object?> get props => [coffeeName, coffeeQuantity, ratio, bloomTime];
+  List<Object?> get props => [description];
 }
