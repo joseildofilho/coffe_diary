@@ -1,9 +1,6 @@
-import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
-import 'package:time/time.dart';
 
 import 'controller.dart';
 
@@ -31,11 +28,13 @@ class _AddBrewForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = context.read<AddBrewController>();
     return FormBuilder(
+        autovalidateMode: AutovalidateMode.always,
         child: Column(
-      children: [
-        _formInput('Description', 'Description', context.read<AddBrewController>().validateDescription),
-      ],
-    ));
+          children: [
+            _formInput(
+                'Description', 'Description', controller.validateDescription),
+          ],
+        ));
   }
 
   Widget _formInput(
@@ -46,25 +45,4 @@ class _AddBrewForm extends StatelessWidget {
         validator: validator,
         autovalidateMode: AutovalidateMode.always,
       );
-}
-
-class _DurationPicker extends HookWidget {
-  @override
-  Widget build(BuildContext context) {
-    final duration = useState(0.seconds);
-    final textController = useTextEditingController();
-    final controller = context.read<AddBrewController>();
-    textController.value = TextEditingValue(text: duration.value.toString());
-
-    return FormBuilderTextField(
-      controller: textController,
-      validator: controller.validateBloomTime,
-      onTap: () =>
-          showDurationPicker(context: context, initialTime: duration.value)
-              .then((value) => duration.value = value ?? 0.seconds),
-      name: 'bloom_time',
-      decoration: const InputDecoration(hintText: 'Bloom Time'),
-      autovalidateMode: AutovalidateMode.always,
-    );
-  }
 }

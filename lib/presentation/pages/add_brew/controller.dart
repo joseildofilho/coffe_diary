@@ -9,13 +9,6 @@ import '../../../domain/entities/ratio.dart';
 import 'state.dart';
 
 class AddBrewController {
-  final ValueNotifier<AddBrewFormState> _formSubmit;
-
-  AddBrewController(
-      {required ValueNotifier<AddBrewFormState> formSubmit,
-      required ValidateBrew validateBrew})
-      : _formSubmit = formSubmit;
-
   String? _coffeeName, _coffeeQuantity, _ratio, _bloomTime, _description;
 
   String? validateCoffeeName(String? coffeeName) {
@@ -49,18 +42,15 @@ class AddBrewController {
     return null;
   }
 
-  Either<List<Failure>, Success> _validateForm() {
-    final brew = Brew.build(
-        coffeeQuantity: 0.0,
-        coffeType: 'arabica',
-        ratio: Ratio.oneOne(),
-        duration: Duration.zero,
-        score: 0,
-        description: _description ?? 'No Description');
-
-
-    return brew.map((_) => success).mapLeft((failures) => failures.failures);
-  }
+  Either<List<Failure>, Success> _validateForm() => Brew.build(
+          coffeeQuantity: 0.0,
+          coffeType: 'arabica',
+          ratio: const Ratio.oneOne(),
+          duration: Duration.zero,
+          score: 0,
+          description: _description ?? 'No Description')
+      .map((_) => success)
+      .mapLeft((failures) => failures.failures);
 
   void save() {}
 }

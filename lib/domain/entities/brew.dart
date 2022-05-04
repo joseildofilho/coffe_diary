@@ -32,7 +32,7 @@ class Brew extends Equatable {
       required String description,}) {
     List<Failure> failures = [];
 
-    if (coffeType.isNotEmpty) {
+    if (coffeType.isEmpty) {
       failures.add(CoffeeTypeIsEmpty());
     }
     if (coffeeQuantity.isNegative) {
