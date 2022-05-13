@@ -1,8 +1,7 @@
 import 'package:coffe_diary/injection.dart';
 import 'package:coffe_diary/presentation/pages/add_brew/page.dart';
+import 'package:coffe_diary/presentation/pages/home/page.dart';
 import 'package:flutter/material.dart';
-
-import 'presentation/pages/home/page.dart';
 
 void main() {
   startDependencies();
@@ -14,10 +13,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const AddBrew(),
-    );
+        title: 'Coffee Diary',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (_) => const Home(),
+          '/add_brew': (_) => const AddBrew(),
+        },
+      );
 }

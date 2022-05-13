@@ -6,23 +6,25 @@ import 'package:provider/provider.dart';
 
 import 'controller.dart';
 
-class Home extends StatelessWidget {
+class Home extends HookWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final mainList = useValueNotifier(MainListInitial());
+    final mainList = useValueNotifier<MainListState>(MainListInitial());
 
     final controller = HomeController(mainList: mainList);
 
     return MultiProvider(
       providers: [
-        Provider(create: (_) => mainList),
+        ChangeNotifierProvider.value(
+          value: mainList,
+        ),
         Provider(
           create: (_) => controller,
         )
       ],
-      child: const HomeScreen(),
+      builder: (_,__) => const HomeScreen(),
     );
   }
 }

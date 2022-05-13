@@ -3,8 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
 class HomeController {
-  HomeController({required ValueNotifier<MainListState> mainList})
-      : _mainListTunnel = mainList;
+  final ValueNotifier<MainListState> _mainList;
 
-  final ValueNotifier<MainListState> _mainListTunnel;
+  HomeController({required ValueNotifier<MainListState> mainList})
+      : _mainList = mainList {
+    _mainList.value = MainListState.loading();
+  }
 }

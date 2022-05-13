@@ -1,9 +1,9 @@
 import 'package:coffe_diary/domain/entities/brew.dart';
-import 'package:coffe_diary/presentation/pages/home/tunnels.dart';
+import 'package:coffe_diary/presentation/pages/home/state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -17,13 +17,13 @@ class HomeScreen extends StatelessWidget {
       );
 }
 
-class _MainList extends HookWidget {
+class _MainList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final state = useValueListenable(context.read<HomeTunnels>().mainList);
+    final state = context.watch<ValueNotifier<MainListState>>();
 
     const brew = Brew.initial();
-    final widget = state.when(
+    final widget = state.value.when(
         initial: () => Shimmer.fromColors(
             child: const BrewItemTile(brew: brew),
             baseColor: Colors.grey.shade400,
