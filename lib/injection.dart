@@ -1,7 +1,7 @@
 import 'package:coffe_diary/domain/usecases/create_brew_register.dart';
 import 'package:coffe_diary/presentation/controllers/brew_controller.dart';
-import 'package:coffe_diary/presentation/pages/add_brew/controller.dart';
-import 'package:coffe_diary/presentation/pages/home/controller.dart';
+import 'package:coffe_diary/presentation/pages/add_brew/presenter.dart';
+import 'package:coffe_diary/presentation/pages/home/presenter.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/repositories/brews_repository_memory.dart';

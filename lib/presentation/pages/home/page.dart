@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 
 import '../../../injection.dart';
-import 'controller.dart';
+import 'presenter.dart';
 
 class Home extends HookWidget {
   const Home({Key? key}) : super(key: key);
