@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 
+import '../../../injection.dart';
+
 class AddBrew extends HookWidget {
   const AddBrew({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = AddBrewController();
-
     return Provider(
-      create: (_) => controller,
+      create: (_) => inject<AddBrewPresenter>(),
       child: const AddBrewScreen(),
     );
   }

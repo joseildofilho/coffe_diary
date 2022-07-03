@@ -1,30 +1,16 @@
 import 'package:equatable/equatable.dart';
 
-abstract class Failure extends Equatable {
-  @override
-  List<Object?> get props => [];
-}
+class Failures<T extends Object> extends Equatable {
+  final Set<T> failures;
 
-class Failures {
-  final List<Failure> failures;
+  const Failures([this.failures = const {}]);
 
-  const Failures(this.failures);
-}
+  add(T t) => failures.add;
 
-class NotificationBundle extends Failure {
-  final Iterable<Notification> notifications;
+  get isEmpty => failures.isEmpty;
 
-  NotificationBundle(this.notifications);
+  get isNotEmpty => failures.isNotEmpty;
 
   @override
-  List<Object?> get props => notifications.toList();
-}
-
-class Notification extends Equatable {
-  final String message;
-
-  const Notification({required this.message});
-
-  @override
-  List<Object?> get props => [message];
+  List<T> get props => failures.toList();
 }

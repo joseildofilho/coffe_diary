@@ -20,6 +20,7 @@ dependencies:
   form_builder_validators: ^7.4.0
   time: ^2.1.0
   duration_picker: ^1.1.0+1
+  functional_listener: ^2.1.0
 
   flutter:
     sdk: flutter

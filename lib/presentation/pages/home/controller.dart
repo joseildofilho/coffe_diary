@@ -1,12 +1,12 @@
+import 'package:coffe_diary/presentation/controllers/brew_controller.dart';
 import 'package:coffe_diary/presentation/pages/home/state.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:functional_listener/functional_listener.dart';
 
-class HomeController {
-  final ValueNotifier<MainListState> _mainList;
+class HomePresenter {
+  final ValueListenable<MainListState> mainList;
 
-  HomeController({required ValueNotifier<MainListState> mainList})
-      : _mainList = mainList {
-    _mainList.value = MainListState.loading();
-  }
+  HomePresenter(BrewControllerImpl brewController)
+      : mainList = brewController.mainList
+            .map((state) => MainListState.done(brew: state.brews));
 }

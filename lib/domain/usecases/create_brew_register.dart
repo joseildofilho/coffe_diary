@@ -1,54 +1,41 @@
 import 'package:coffe_diary/core/usecase/failure.dart';
-import 'package:coffe_diary/core/usecase/success.dart';
 import 'package:coffe_diary/core/usecase/usecases.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fpdart/fpdart.dart';
 
-class CreateBrewRegister extends UseCase<CreateBrewRegisterParams, Success> {
+import '../entities/brew.dart';
+
+class CreateBrewRegister extends UseCase<CreateBrewRegisterParams, List<Brew>> {
+  List<Brew> _brews = [];
+
   @override
-  TaskEither<Failure, Success> call(CreateBrewRegisterParams param) {
-    return _validateInput(param).toTask();
-  }
+  TaskEither<Failures, List<Brew>> call(CreateBrewRegisterParams param) =>
+      _buildBrew(param).flatMap((brew) {
+        _brews = [..._brews, brew];
+        print(_brews);
+        return right(_brews);
+      }).toTaskEither();
 
-  Either<NotificationBundle, Success> _validateInput(
-      CreateBrewRegisterParams param) {
-    final notifications = <Notification>[];
-
-    if (param.coffeeName.isEmpty) {
-      notifications.add(const InvalidCoffeeName());
-    }
-
-    if (param.coffeeQuantity <= 0.0) {
-      notifications.add(const InvalidCoffeQuantity());
-    }
-
-    if (notifications.isEmpty) {
-      return Either.of(success);
-    }
-    return Either.left(NotificationBundle(notifications));
+  Either<Failures, Brew> _buildBrew(CreateBrewRegisterParams param) {
+    return Brew.build(description: param.description);
   }
 }
 
 class CreateBrewRegisterParams extends Equatable {
-  final String coffeeName, ratio;
-  final double coffeeQuantity;
-  final Duration bloomTime;
+  final String description;
 
   const CreateBrewRegisterParams({
-    required this.coffeeName,
-    required this.coffeeQuantity,
-    required this.ratio,
-    required this.bloomTime,
+    required this.description,
   });
 
   @override
-  List<Object?> get props => [coffeeName, coffeeQuantity, ratio, bloomTime];
+  List<Object?> get props => [description];
 }
 
-class InvalidCoffeeName extends Notification {
-  const InvalidCoffeeName() : super(message: 'InvalidCoffeeName');
+class InvalidCoffeeName {
+  const InvalidCoffeeName();
 }
 
-class InvalidCoffeQuantity extends Notification {
-  const InvalidCoffeQuantity() : super(message: 'InvalidCoffeQuantity');
+class InvalidCoffeQuantity {
+  const InvalidCoffeQuantity();
 }

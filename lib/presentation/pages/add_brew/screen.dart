@@ -16,7 +16,7 @@ class AddBrewScreen extends StatelessWidget {
           children: [
             _AddBrewForm(),
             ElevatedButton(
-                onPressed: context.read<AddBrewController>().save,
+                onPressed: context.read<AddBrewPresenter>().save,
                 child: const Text('Save'))
           ],
         ),
@@ -26,7 +26,7 @@ class AddBrewScreen extends StatelessWidget {
 class _AddBrewForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<AddBrewController>();
+    final controller = context.read<AddBrewPresenter>();
     return FormBuilder(
         autovalidateMode: AutovalidateMode.always,
         child: Column(

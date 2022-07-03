@@ -26,8 +26,10 @@ class _$MainListStateTearOff {
     return MainListLoading();
   }
 
-  MainListDone done() {
-    return MainListDone();
+  MainListDone done({required List<Brew> brew}) {
+    return MainListDone(
+      brew: brew,
+    );
   }
 }
 
@@ -40,21 +42,21 @@ mixin _$MainListState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() done,
+    required TResult Function(List<Brew> brew) done,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? done,
+    TResult Function(List<Brew> brew)? done,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? done,
+    TResult Function(List<Brew> brew)? done,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,7 +144,7 @@ class _$MainListInitial implements MainListInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() done,
+    required TResult Function(List<Brew> brew) done,
   }) {
     return initial();
   }
@@ -152,7 +154,7 @@ class _$MainListInitial implements MainListInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? done,
+    TResult Function(List<Brew> brew)? done,
   }) {
     return initial?.call();
   }
@@ -162,7 +164,7 @@ class _$MainListInitial implements MainListInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? done,
+    TResult Function(List<Brew> brew)? done,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -253,7 +255,7 @@ class _$MainListLoading implements MainListLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() done,
+    required TResult Function(List<Brew> brew) done,
   }) {
     return loading();
   }
@@ -263,7 +265,7 @@ class _$MainListLoading implements MainListLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? done,
+    TResult Function(List<Brew> brew)? done,
   }) {
     return loading?.call();
   }
@@ -273,7 +275,7 @@ class _$MainListLoading implements MainListLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? done,
+    TResult Function(List<Brew> brew)? done,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -326,6 +328,7 @@ abstract class $MainListDoneCopyWith<$Res> {
   factory $MainListDoneCopyWith(
           MainListDone value, $Res Function(MainListDone) then) =
       _$MainListDoneCopyWithImpl<$Res>;
+  $Res call({List<Brew> brew});
 }
 
 /// @nodoc
@@ -337,35 +340,58 @@ class _$MainListDoneCopyWithImpl<$Res> extends _$MainListStateCopyWithImpl<$Res>
 
   @override
   MainListDone get _value => super._value as MainListDone;
+
+  @override
+  $Res call({
+    Object? brew = freezed,
+  }) {
+    return _then(MainListDone(
+      brew: brew == freezed
+          ? _value.brew
+          : brew // ignore: cast_nullable_to_non_nullable
+              as List<Brew>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$MainListDone implements MainListDone {
-  _$MainListDone();
+  _$MainListDone({required this.brew});
+
+  @override
+  final List<Brew> brew;
 
   @override
   String toString() {
-    return 'MainListState.done()';
+    return 'MainListState.done(brew: $brew)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MainListDone);
+        (other.runtimeType == runtimeType &&
+            other is MainListDone &&
+            const DeepCollectionEquality().equals(other.brew, brew));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(brew));
+
+  @JsonKey(ignore: true)
+  @override
+  $MainListDoneCopyWith<MainListDone> get copyWith =>
+      _$MainListDoneCopyWithImpl<MainListDone>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() done,
+    required TResult Function(List<Brew> brew) done,
   }) {
-    return done();
+    return done(brew);
   }
 
   @override
@@ -373,9 +399,9 @@ class _$MainListDone implements MainListDone {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? done,
+    TResult Function(List<Brew> brew)? done,
   }) {
-    return done?.call();
+    return done?.call(brew);
   }
 
   @override
@@ -383,11 +409,11 @@ class _$MainListDone implements MainListDone {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? done,
+    TResult Function(List<Brew> brew)? done,
     required TResult orElse(),
   }) {
     if (done != null) {
-      return done();
+      return done(brew);
     }
     return orElse();
   }
@@ -428,5 +454,10 @@ class _$MainListDone implements MainListDone {
 }
 
 abstract class MainListDone implements MainListState {
-  factory MainListDone() = _$MainListDone;
+  factory MainListDone({required List<Brew> brew}) = _$MainListDone;
+
+  List<Brew> get brew;
+  @JsonKey(ignore: true)
+  $MainListDoneCopyWith<MainListDone> get copyWith =>
+      throw _privateConstructorUsedError;
 }

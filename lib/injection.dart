@@ -1,20 +1,37 @@
+import 'package:coffe_diary/domain/usecases/create_brew_register.dart';
+import 'package:coffe_diary/presentation/controllers/brew_controller.dart';
+import 'package:coffe_diary/presentation/pages/add_brew/controller.dart';
+import 'package:coffe_diary/presentation/pages/home/controller.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/repositories/brews_repository_memory.dart';
 import 'domain/repositories/brews_repository.dart';
-import 'domain/usecases/get_brews.dart';
 
 final inject = GetIt.I;
 
 Future<void> startDependencies() async {
   _startRepositories();
   _startUseCases();
+  _startControllers();
+  _startPresenters();
+}
+
+void _startPresenters() {
+  inject.registerLazySingleton<AddBrewPresenter>(
+      () => AddBrewPresenter(inject<BrewControllerImpl>()));
+  inject.registerLazySingleton<HomePresenter>(
+      () => HomePresenter(inject<BrewControllerImpl>()));
+}
+
+void _startControllers() {
+  inject.registerLazySingleton<BrewControllerImpl>(
+      () => BrewControllerImpl(inject<CreateBrewRegister>()));
+}
+
+void _startUseCases() {
+  inject.registerLazySingleton<CreateBrewRegister>(() => CreateBrewRegister());
 }
 
 void _startRepositories() {
   inject.registerLazySingleton<BrewsRepository>(() => BrewsRepositoryMemory());
-}
-
-void _startUseCases() {
-  inject.registerFactory<GetBrews>(() => GetBrews(inject<BrewsRepository>()));
 }

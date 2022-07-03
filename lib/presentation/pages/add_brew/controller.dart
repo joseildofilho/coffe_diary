@@ -1,37 +1,21 @@
-import 'package:coffe_diary/domain/usecases/validate_brew.dart';
-import 'package:fpdart/fpdart.dart';
+import 'package:coffe_diary/presentation/controllers/brew_controller.dart';
 
-import '../../../core/usecase/failure.dart';
-import '../../../core/usecase/success.dart';
+class AddBrewPresenter {
+  final BrewControllerImpl _brewController;
 
-class AddBrewController {
-  final ValidateBrew _validateBrew = ValidateBrew();
+  AddBrewPresenter(BrewControllerImpl brewController)
+      : _brewController = brewController;
+
   String? _description;
 
-  String? validateCoffeeName(String? coffeeName) {
-    return null;
-  }
-
-  String? validateCoffeeQuantiy(String? coffeeQuantity) {
-    return null;
-  }
-
-  String? validateRatio(String? ratio) {
-    return null;
-  }
-
   String? validateDescription(String? description) {
-    _description = description;
-    return _validateForm()
-        .match((f) => 'Description cannot be Empty', (_) => null);
-  }
-
-  String? validateBloomTime(String? bloomTime) {
+    if (description != null) {
+      _description = description;
+    }
     return null;
   }
 
-  Either<List<Failure>, Success> _validateForm() =>
-      _validateBrew(ValidateBrewParams(description: _description));
-
-  void save() {}
+  Future<void> save() async {
+    await _brewController.registerBrew(_description!).run();
+  }
 }
