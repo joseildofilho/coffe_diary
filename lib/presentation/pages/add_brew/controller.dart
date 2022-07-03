@@ -1,9 +1,9 @@
 import 'package:coffe_diary/presentation/controllers/brew_controller.dart';
 
 class AddBrewPresenter {
-  final BrewControllerImpl _brewController;
+  final BrewController _brewController;
 
-  AddBrewPresenter(BrewControllerImpl brewController)
+  AddBrewPresenter(BrewController brewController)
       : _brewController = brewController;
 
   String? _description;

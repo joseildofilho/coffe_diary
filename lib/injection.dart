@@ -18,14 +18,14 @@ Future<void> startDependencies() async {
 
 void _startPresenters() {
   inject.registerLazySingleton<AddBrewPresenter>(
-      () => AddBrewPresenter(inject<BrewControllerImpl>()));
+      () => AddBrewPresenter(inject<BrewController>()));
   inject.registerLazySingleton<HomePresenter>(
-      () => HomePresenter(inject<BrewControllerImpl>()));
+      () => HomePresenter(inject<BrewController>()));
 }
 
 void _startControllers() {
-  inject.registerLazySingleton<BrewControllerImpl>(
-      () => BrewControllerImpl(inject<CreateBrewRegister>()));
+  inject.registerLazySingleton<BrewController>(
+      () => BrewController(inject<CreateBrewRegister>()));
 }
 
 void _startUseCases() {

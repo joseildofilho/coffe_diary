@@ -6,12 +6,12 @@ import '../../core/usecase/failure.dart';
 import '../../domain/entities/brew.dart';
 import 'brew_state.dart';
 
-class BrewControllerImpl {
+class BrewController {
   final ValueNotifier<BrewState> mainList = ValueNotifier(BrewState(brews: []));
 
   final CreateBrewRegister _createBrewRegister;
 
-  BrewControllerImpl(this._createBrewRegister);
+  BrewController(this._createBrewRegister);
 
   TaskEither<Failures, List<Brew>> registerBrew(String description) {
     final params = CreateBrewRegisterParams(description: description);
