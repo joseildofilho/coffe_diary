@@ -1,20 +1,19 @@
 import 'package:coffe_diary/core/usecase/failure.dart';
 import 'package:coffe_diary/core/usecase/usecases.dart';
+import 'package:coffe_diary/domain/repositories/brews_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../entities/brew.dart';
 
 class CreateBrewRegister extends UseCase<CreateBrewRegisterParams, List<Brew>> {
-  List<Brew> _brews = [];
+  final BrewsRepository brewRepository;
+
+  CreateBrewRegister(this.brewRepository);
 
   @override
   TaskEither<Failures, List<Brew>> call(CreateBrewRegisterParams param) =>
-      _buildBrew(param).flatMap((brew) {
-        _brews = [..._brews, brew];
-        print(_brews);
-        return right(_brews);
-      }).toTaskEither();
+      _buildBrew(param).toTaskEither().flatMap(brewRepository.saveBrew);
 
   Either<Failures, Brew> _buildBrew(CreateBrewRegisterParams param) {
     return Brew.build(description: param.description);

@@ -5,4 +5,5 @@ import '../../core/usecase/failure.dart';
 
 abstract class BrewsRepository {
   TaskEither<Failures, List<Brew>> getBrews();
+  TaskEither<Failures, List<Brew>> saveBrew(Brew brew);
 }

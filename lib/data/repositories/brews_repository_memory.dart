@@ -11,4 +11,8 @@ class BrewsRepositoryMemory implements BrewsRepository {
     return TaskEither.of([]);
   }
 
+  final List<Brew> brews = [];
+  @override
+  TaskEither<Failures<Object>, List<Brew>> saveBrew(Brew brew) =>
+      TaskEither.right(brews..add(brew));
 }

@@ -29,7 +29,8 @@ void _startControllers() {
 }
 
 void _startUseCases() {
-  inject.registerLazySingleton<CreateBrewRegister>(() => CreateBrewRegister());
+  inject.registerLazySingleton<CreateBrewRegister>(
+      () => CreateBrewRegister(inject<BrewsRepository>()));
 }
 
 void _startRepositories() {
