@@ -10,6 +10,8 @@ class Brew extends Equatable {
 
   const Brew.initial() : description = '';
 
+  const Brew(this.description);
+
   static Either<Failures, Brew> build({
     required String description,
   }) {

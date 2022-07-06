@@ -2,9 +2,15 @@ import 'package:coffe_diary/injection.dart';
 import 'package:coffe_diary/presentation/pages/add_brew/page.dart';
 import 'package:coffe_diary/presentation/pages/home/page.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+import 'data/model/brew_model.dart';
+
+void main() async {
   startDependencies();
+  await Hive.initFlutter();
+  Hive.registerAdapter(BrewAdapter());
+  await Hive.openBox('brews');
   runApp(const MyApp());
 }
 
